@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContactUsComponent } from './component/contact-us/contact-us.component';
 import { ForgotComponent } from './component/forgot/forgot.component';
 import { HomeComponent } from './component/home/home.component';
+import { MyAccountComponent } from './component/my-account/my-account.component';
 import { TutorialsComponent } from './component/tutorials/tutorials.component';
 
 const routes: Routes = [
@@ -20,6 +21,9 @@ const routes: Routes = [
   },
   {
     path:'forgot',component:ForgotComponent
+  },
+  {
+    path:'myaccount',component:MyAccountComponent
   }
 ];
 
