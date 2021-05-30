@@ -1,0 +1,75 @@
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">SignUp for an Account</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"  (click)="onClose()"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="signupForm">
+                <div class="form-group auth-form-group mb-4">
+                  <mat-icon matSuffix class="auth-page-icon">face</mat-icon>
+                  <input type="text" formControlName="username" class="form-control auth-control" id="username"
+                    placeholder="Username" [ngClass]="{ 'is-invalid': f.username.errors && f.username.touched}">
+                  <div *ngIf=" f.username.errors" class="invalid-feedback">
+                    <div *ngIf="f.username.errors.required">Username is required</div>
+                  </div>
+                </div>
+                <div class="form-group auth-form-group mb-4">
+                  <mat-icon matSuffix class="auth-page-icon">perm_identity</mat-icon>
+                  <input type="text" formControlName="name" class="form-control auth-control" id="name"
+                    placeholder="Name" [ngClass]="{ 'is-invalid': f.name.errors && f.name.touched}">
+                  <div *ngIf=" f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required">Name is required</div>
+                  </div>
+                </div>
+                <div class="form-group auth-form-group mb-4">
+                    <!-- <img class="auth-page-icon" src="https://img.icons8.com/material-rounded/24/000000/filled-message.png "  /> -->
+                    <mat-icon matSuffix class="auth-page-icon">email</mat-icon>
+                    <input type="email" formControlName="email" class="form-control auth-control" id="email"
+                    placeholder="Email" [ngClass]="{ 'is-invalid':  f.email.errors && f.email.touched}">
+                  <div *ngIf=" f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                  </div>
+                </div>
+                
+
+                <div class="form-group auth-form-group mb-4">
+                  <mat-icon matSuffix class="auth-page-icon">vpn_key</mat-icon>
+                  <input type="password" formControlName="password" class="form-control auth-control"
+                    id="password" [ngClass]="{ 'is-invalid':  f.password.errors && f.password.touched }"
+                    placeholder="Password" />
+                  <div *ngIf="  f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                  </div>
+                </div>
+
+                <div class="form-group auth-form-group mb-4">
+                  <mat-icon matSuffix class="auth-page-icon">vpn_key</mat-icon>
+                  <input type="password" formControlName="cpassword" class="form-control auth-control"
+                    id="cpassword" [ngClass]="{ 'is-invalid':  f.cpassword.errors && f.cpassword.touched}"
+                    placeholder="Confirm Password" />
+                  <div *ngIf="  f.cpassword.errors" class="invalid-feedback">
+                    <div *ngIf="f.cpassword.errors.required">Confirm Password is required</div>
+                  </div>
+                </div>
+                <div *ngIf="message1" class="alert alert-success" role="alert">
+                {{message1}}
+                </div>
+                <div *ngIf="message2" class="alert alert-danger" role="alert">
+                {{message2}}
+                </div>
+                <div class="container-login100-form-btn">
+                 
+                  <button mat-flat-button color="primary" class="login100-form-btn" type="submit" (click)="submit()">
+                   SignUp
+                   
+                  </button>
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  (click)="onClose()">Close</button>
+        </div>
+      </div>
+    </div>
