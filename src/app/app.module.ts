@@ -16,6 +16,7 @@ import { SignupComponent } from './component/signup/signup.component';
 import { LoginComponent } from './component/login/login.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { MyAccountComponent } from './component/my-account/my-account.component';
+import { authInterceptorProviders } from './services/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { MyAccountComponent } from './component/my-account/my-account.component'
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
