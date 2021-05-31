@@ -7,8 +7,8 @@
               <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
             </div>
             <div class="text-center">
-            <a  routerLink="/tutorials" class="btn btn-primary mx-2">Go to Blog</a>
-            <a  routerLink="/tutorials" class="btn btn-success mx-2">Go to Videos</a>
+            <a  routerLink="/tutorials" data-bs-toggle="modal" data-bs-target="#loginModal" class="btn btn-primary mx-2">Go to Blog</a>
+            <a  routerLink="/tutorials" data-bs-toggle="modal" data-bs-target="#loginModal" class="btn btn-success mx-2">Go to Videos</a>
             <a  routerLink="/contact-us" class="btn btn-info mx-2">Contact Us!</a>
           </div>
           </div>
@@ -23,7 +23,7 @@
             <div class="card-body">
               <h3 class="card-title">Free Video Courses</h3>
               <p class="card-text">Get your programming career started with these free video courses. Source code is available with all the videos for amazing learning experience.</p>
-              <a href="#"  routerLink="/tutorials" class="btn bg-p text-white">Go somewhere</a>
+              <a href="#"  data-bs-toggle="modal" data-bs-target="#loginModal"  routerLink="/tutorials" class="btn bg-p text-white">Go somewhere</a>
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@
             <div class="card-body">
               <h3 class="card-title">Coding Articles</h3>
               <p class="card-text">Some of the latest coding information compiled in the form of coding articles. Keep your programming knowledge up to date with these articles.</p>
-              <a href="#" routerLink="/tutorials" class="btn bg-p text-white">Go somewhere</a>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal"  routerLink="/tutorials" class="btn bg-p text-white">Go somewhere</a>
             </div>
           </div>
         </div>
@@ -50,3 +50,6 @@
 
     </div>
 </div>
+<div *ngIf="!isLoggedIn"class="modal fade"  tabindex="-1" aria-labelledby="exampleModalLabel" id="loginModal" aria-hidden="true">
+  <app-login ></app-login>
+  </div>

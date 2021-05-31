@@ -5,6 +5,7 @@ import { ForgotComponent } from './component/forgot/forgot.component';
 import { HomeComponent } from './component/home/home.component';
 import { MyAccountComponent } from './component/my-account/my-account.component';
 import { TutorialsComponent } from './component/tutorials/tutorials.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   {
@@ -17,13 +18,13 @@ const routes: Routes = [
     path:'contact-us',component:ContactUsComponent
   },
   {
-    path:'tutorials',component:TutorialsComponent
+    path:'tutorials',component:TutorialsComponent,canActivate:[AuthGuard]
   },
   {
-    path:'forgot',component:ForgotComponent
+    path:'forgot',component:ForgotComponent,canActivate:[AuthGuard]
   },
   {
-    path:'myaccount',component:MyAccountComponent
+    path:'myaccount',component:MyAccountComponent,canActivate:[AuthGuard]
   }
 ];
 
