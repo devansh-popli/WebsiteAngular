@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit {
            this.httpService.setUser(data); 
            console.log(data)
            console.log("user saved in local storage")
+           window.location.href="/home"
           })
           console.log("success")
         },(error)=>{

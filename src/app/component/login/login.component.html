@@ -12,7 +12,7 @@
                   <div class="form-group auth-form-group mb-4">
                       <mat-icon matSuffix class="auth-page-icon">face</mat-icon>
                       <input type="text" formControlName="username" class="form-control auth-control" id="email2"
-                         [ngClass]="{'is-invalid': form.username.errors && form.username.touched}">
+                      placeholder="Username" [ngClass]="{'is-invalid': form.username.errors && form.username.touched}">
                         <div *ngIf="e?.invalid && e?.touched">
                           <div class="text-danger" *ngIf="e?.errors?.required">Username is required</div>
                         </div>
