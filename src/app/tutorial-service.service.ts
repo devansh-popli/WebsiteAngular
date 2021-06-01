@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Video } from 'src/video';
+import { Model } from './model';
 import { User } from './user';
 
 
@@ -37,7 +39,7 @@ public getCurrentUser()
 public setUser(user:User){
 localStorage.setItem('user',JSON.stringify(user));
 }
-public getUser(user:User){
+public getUser(){
   let str=localStorage.getItem('user');
   if(str!=null)
   {
@@ -61,5 +63,15 @@ public getToken()
     {
       console.log(user);
       return this.httpClient.post<User>("http://localhost:8080/tutosign",user)
+    }
+
+    public getCards()
+    {
+      return this.httpClient.get<Model[]>(`${this.baseUrl}/cards`);
+    }
+
+    public getVideos(cardId:string)
+    {
+      return this.httpClient.get<Video[]>(`${this.baseUrl}/videos/${cardId}`);
     }
 }

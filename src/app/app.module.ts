@@ -17,6 +17,8 @@ import { LoginComponent } from './component/login/login.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { MyAccountComponent } from './component/my-account/my-account.component';
 import { authInterceptorProviders } from './services/auth.interceptor';
+import {MatCardModule} from '@angular/material/card';
+import { VideosComponent } from './component/videos/videos.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { authInterceptorProviders } from './services/auth.interceptor';
     SignupComponent,
     LoginComponent,
     FooterComponent,
-    MyAccountComponent 
+    MyAccountComponent,
+    VideosComponent 
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { authInterceptorProviders } from './services/auth.interceptor';
     MatIconModule,
     MatButtonModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

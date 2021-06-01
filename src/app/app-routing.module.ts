@@ -5,6 +5,7 @@ import { ForgotComponent } from './component/forgot/forgot.component';
 import { HomeComponent } from './component/home/home.component';
 import { MyAccountComponent } from './component/my-account/my-account.component';
 import { TutorialsComponent } from './component/tutorials/tutorials.component';
+import { VideosComponent } from './component/videos/videos.component';
 import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
@@ -25,6 +26,9 @@ const routes: Routes = [
   },
   {
     path:'myaccount',component:MyAccountComponent,canActivate:[AuthGuard]
+  },
+  {
+    path:'videos/:id',component:VideosComponent,canActivate:[AuthGuard]
   }
 ];
 

@@ -23,7 +23,7 @@
           <button class="btn btn-success" type="submit">Search</button>
           <div *ngIf="isLoggedIn"class="dropdown">
             <a class="m-2 dropdown-toggle text-white text-decoration-none" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-             Welcome
+             Welcome {{user.name}}
             </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><a class="dropdown-item" href="#" routerLink="/myaccount">My Account</a></li>
