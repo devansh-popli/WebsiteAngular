@@ -19,6 +19,7 @@ import { MyAccountComponent } from './component/my-account/my-account.component'
 import { authInterceptorProviders } from './services/auth.interceptor';
 import {MatCardModule} from '@angular/material/card';
 import { VideosComponent } from './component/videos/videos.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { VideosComponent } from './component/videos/videos.component';
     MatButtonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressBarModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

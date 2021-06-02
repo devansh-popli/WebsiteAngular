@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Video } from 'src/video';
 import { Model } from './model';
 import { User } from './user';
@@ -11,6 +12,8 @@ import { User } from './user';
 export class TutorialServiceService {
 baseUrl="http://localhost:8080";
   constructor(private httpClient:HttpClient) { }
+  public isLoading=new BehaviorSubject<Boolean>(false);
+  public isLogin=new BehaviorSubject<Boolean>(false);
   public loginUser(user:User)
     {
       // console.log(user);
