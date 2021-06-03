@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PasswordValidator } from 'src/app/password.validator';
 import { TutorialServiceService } from 'src/app/tutorial-service.service';
 import { User } from 'src/app/user';
 
@@ -28,6 +29,8 @@ export class SignupComponent implements OnInit {
       ],
       password: ['', Validators.required],
       cpassword: ['', Validators.required]
+    },{
+      validator:PasswordValidator
     });
   }
   get f()

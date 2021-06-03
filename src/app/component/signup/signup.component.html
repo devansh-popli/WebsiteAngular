@@ -47,11 +47,10 @@
                 <div class="form-group auth-form-group mb-4">
                   <mat-icon matSuffix class="auth-page-icon">vpn_key</mat-icon>
                   <input type="password" formControlName="cpassword" class="form-control auth-control"
-                    id="cpassword" [ngClass]="{ 'is-invalid':  f.cpassword.errors && f.cpassword.touched}"
+                    id="cpassword" [ngClass]="{ 'is-invalid':  f.cpassword.errors && f.cpassword.touched || signupForm.errors?.misMatch}"
                     placeholder="Confirm Password" />
-                  <div *ngIf="  f.cpassword.errors" class="invalid-feedback">
-                    <div *ngIf="f.cpassword.errors.required">Confirm Password is required</div>
-                  </div>
+                    <div *ngIf=" f.cpassword.errors?.required && f.cpassword.touched">Confirm Password is required</div>
+                  <div class="text-danger" *ngIf="signupForm.errors?.misMatch">Password do not match</div>
                 </div>
                 <div *ngIf="message1" class="alert alert-success" role="alert">
                 {{message1}}
@@ -61,7 +60,7 @@
                 </div>
                 <div class="container-login100-form-btn">
                  
-                  <button mat-flat-button color="primary" class="login100-form-btn" type="submit" (click)="submit()">
+                  <button mat-flat-button color="primary" class="login100-form-btn" [class.disabled]="signupForm.invalid" type="submit" (click)="submit()">
                    SignUp
                    
                   </button>
