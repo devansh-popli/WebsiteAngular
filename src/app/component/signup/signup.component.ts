@@ -15,6 +15,7 @@ export class SignupComponent implements OnInit {
   user:User=new User();
   message1!:string;
   message2!:string;
+  otpmessage!: string;
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private httpservice:TutorialServiceService) { }
@@ -27,6 +28,7 @@ export class SignupComponent implements OnInit {
         '',
         [Validators.required, Validators.email, Validators.minLength(5)]
       ],
+      otp: ['', Validators.required],
       password: ['', Validators.required],
       cpassword: ['', Validators.required]
     },{
@@ -37,8 +39,22 @@ export class SignupComponent implements OnInit {
   {
     return this.signupForm.controls;
   }
+  sendOTP(){
+    let email= this.signupForm.get('email')?.value
+    this.httpservice.sendOTP(email).subscribe(response=>{
+      console.log(response)
+      console.log("OTP sent")
+      this.otpmessage="otp sent successfully"
+    });
+  }
   submit()
   {
+    if(!this.signupForm.valid)
+{
+  console.log("please fill the required fields first");
+  this.message2="please fill the required fields first";
+  return;
+}
     this.user=this.signupForm.value;
     this.httpservice.signUser(this.user).subscribe(data=>
       {
@@ -55,6 +71,7 @@ export class SignupComponent implements OnInit {
     // this.signupForm.patchValue(new User());
     this.message1="";
     this.message2="";
+    this.otpmessage="";
   }
 
 }

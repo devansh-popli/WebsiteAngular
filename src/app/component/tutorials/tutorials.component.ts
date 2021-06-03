@@ -25,7 +25,7 @@ export class TutorialsComponent implements OnInit {
   }
   navigate(cardId:number)
   {
-    this.router.navigate([`/videos/${cardId}`]);
+    this.router.navigate([`/tutorials/${cardId}`]);
   }
 
 }

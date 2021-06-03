@@ -2,7 +2,9 @@
 {
     background-color:  #7579e7;
 }
-
+.f{
+    margin-left: 20px;
+}
     .form-group .form-control
     {
         width: 420px;

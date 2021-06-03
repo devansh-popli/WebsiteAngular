@@ -28,7 +28,7 @@ const routes: Routes = [
     path:'myaccount',component:MyAccountComponent,canActivate:[AuthGuard]
   },
   {
-    path:'videos/:id',component:VideosComponent,canActivate:[AuthGuard]
+    path:'tutorials/:id',component:VideosComponent,canActivate:[AuthGuard]
   }
 ];
 
