@@ -4,7 +4,7 @@
 
             <div *ngFor="let card of cards" class="col-lg-4 ">
                 <mat-card class="example m-4">
- 
+                    <!-- <img _ngcontent-serverapp-c48="" width="140" height="140" class="rounded-circle" src={{card.image}}> -->
                     <img mat-card-image class="rounded-circle" src={{card.image}} style="width: 140px; height:140px">
                     <mat-card-title>
                         <h1>{{card.title}}</h1>
@@ -13,7 +13,7 @@
                         <h3>{{card.content}}</h3>
                     </mat-card-content>
                     <mat-card-actions>
-                        <button mat-stroked-button color="primary" (click)="navigate(card.card)">Start Watching</button>
+                        <button mat-stroked-button color="primary" (click)="navigate(card.card)">Start Watching >></button>
                     </mat-card-actions>
                 </mat-card>
             </div>
