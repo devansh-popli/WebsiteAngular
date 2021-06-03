@@ -1,16 +1,14 @@
 <div class="container text-center">
    
         <div  class="row d-flex align-items-center">
-
             <div *ngFor="let card of cards" class="col-lg-4 ">
-                <mat-card class="example m-4">
- 
-                    <img mat-card-image class="rounded-circle" src={{card.image}} style="width: 140px; height:140px">
+                <mat-card class="example m-4" style="height: 25rem;">
+                    <img  mat-card-image src={{card.image}} style="width: 140px; height:140px"/>
                     <mat-card-title>
                         <h1>{{card.title}}</h1>
                     </mat-card-title>
                     <mat-card-content>
-                        <h3>{{card.content}}</h3>
+                        <h4>{{card.content}}</h4>
                     </mat-card-content>
                     <mat-card-actions>
                         <button mat-stroked-button color="primary" (click)="navigate(card.card)">Start Watching</button>
