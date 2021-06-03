@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TutorialServiceService } from 'src/app/tutorial-service.service';
@@ -14,6 +14,9 @@ export class LoginComponent implements OnInit {
   error = '';
   user:User=new User();
   message!: string;
+  @ViewChild('myDiv') myDiv!: ElementRef<HTMLElement>;
+
+
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private httpService:TutorialServiceService) { }
@@ -61,7 +64,10 @@ export class LoginComponent implements OnInit {
            this.httpService.setUser(data); 
            console.log(data)
            console.log("user saved in local storage")
-           window.location.href="/home"
+           let el: HTMLElement = this.myDiv.nativeElement;
+           el.click();
+           this.httpService.isLogin.next(true);
+         //  location.reload()
           })
           console.log("success")
         },(error)=>{

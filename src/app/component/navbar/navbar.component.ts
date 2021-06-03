@@ -8,17 +8,21 @@ import { User } from 'src/app/user';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  isLoggedIn=false;
+  isLoggedIn!:any;
   user!:User
     constructor(private loginService:TutorialServiceService) { }
-  
+
     ngOnInit() {
+      this.loginService.isLogin.subscribe(data=>{
+        console.log(data)
+        this.isLoggedIn=data;
+      })
     this.user= this.loginService.getUser();
       this.isLoggedIn=this.loginService.isLoggedin()
     }
     logoutUser()
     {
-      this.isLoggedIn=false;
+      this.loginService.isLogin.next(false);
       this.loginService.logout()
     }
    
