@@ -1,30 +1,13 @@
 <div class="container text-center">
-<<<<<<< HEAD
-
-    <div class="row d-flex align-items-center">
-=======
->>>>>>> 4476b6d4fc9cd8f13e4ad2c0cd5ace0ac3b96a6b
 
     <div class="row d-flex align-items-center">
         <div *ngFor="let video of videos  " class="col-lg-6 ">
-<<<<<<< HEAD
-            <mat-card class="example m-4">
-                <iframe width="460" height="315"
-                    src="https://www.youtube.com/embed/videoseries?list=PLu0W_9lII9aiBNXUisDdSmfNbsKq407XC"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-
-                <!-- src={{video.src}} -->
-                
-=======
 
             <mat-card class="example m-4" style="width: 590px;">
                 {{safeURL}}
                 <iframe width="550" height="315" [src]="video.src" title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
->>>>>>> 4476b6d4fc9cd8f13e4ad2c0cd5ace0ac3b96a6b
                 <mat-card-title>
                     <h1>{{video.title}}</h1>
                 </mat-card-title>
@@ -37,8 +20,4 @@
             </mat-card>
         </div>
     </div>
-<<<<<<< HEAD
 </div>
-=======
-</div>
->>>>>>> 4476b6d4fc9cd8f13e4ad2c0cd5ace0ac3b96a6b
