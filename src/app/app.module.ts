@@ -20,7 +20,7 @@ import { authInterceptorProviders } from './services/auth.interceptor';
 import {MatCardModule} from '@angular/material/card';
 import { VideosComponent } from './component/videos/videos.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +44,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     ReactiveFormsModule,
     HttpClientModule,
     MatCardModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

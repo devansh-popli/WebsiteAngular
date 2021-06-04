@@ -26,6 +26,7 @@ export class TutorialServiceService {
   }
   public saveToken(token: any) {
     localStorage.setItem('token', token);
+    // this.isLogin.next(true);
     return true;
   }
   public isLoggedin() {
@@ -42,6 +43,7 @@ export class TutorialServiceService {
   }
   public setUser(user: User) {
     localStorage.setItem('user', JSON.stringify(user));
+    this.isLogin.next(true);
   }
   public getUser() {
     let str = localStorage.getItem('user');
@@ -56,14 +58,14 @@ export class TutorialServiceService {
   public logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    return true;
+    //return true;
   }
   public getToken() {
     return localStorage.getItem('token')
   }
-  public signUser(user: User) {
+  public signUser(user: User,otp:string) {
     console.log(user);
-    return this.httpClient.post<User>("http://localhost:8080/tutosign", user)
+    return this.httpClient.post<User>(`${this.baseUrl}/register/${otp}`, user)
   }
 
   public getCards() {

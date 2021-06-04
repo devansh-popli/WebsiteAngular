@@ -32,7 +32,7 @@
                     <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
                   </div>
                  <div><small *ngIf="otpmessage || !(otpmessage=='')" class="f text-success mb-2">{{otpmessage}}</small></div>
-                  <button class="f mt-2 btn btn-sm btn-outline-danger" [class.disabled]="f.email.errors" (click)="sendOTP()">Send OTP</button>
+                             <button class="f mt-2 btn btn-sm btn-outline-danger d-flex" [class.disabled]="f.email.errors" (click)="sendOTP()"><div *ngIf="load"><mat-spinner color="accent" diameter="21"></mat-spinner></div><span class="mx-1 ">Send OTP</span></button>
                 </div>
 
                 <div class="form-group auth-form-group mb-4">
@@ -71,9 +71,8 @@
                 </div>
                 <div class="container-login100-form-btn">
                  
-                  <button mat-flat-button color="primary" class="login100-form-btn" [class.disabled]="signupForm.invalid" type="submit" (click)="submit()">
-                   SignUp
-                   
+                  <button mat-flat-button class="login100-form-btn text-white" [class.disabled]="signupForm.invalid" type="submit" (click)="submit()">
+                   <div class="d-flex justify-content-center "><div class="mt-2" *ngIf="load2"><mat-spinner color="primary" diameter="20"></mat-spinner></div><span class="mx-1">SignUp</span></div>
                   </button>
                 </div>
               </form>

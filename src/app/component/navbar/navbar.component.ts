@@ -13,17 +13,18 @@ export class NavbarComponent implements OnInit {
     constructor(private loginService:TutorialServiceService) { }
 
     ngOnInit() {
-      this.loginService.isLogin.subscribe(data=>{
+      this.loginService.isLogin.asObservable().subscribe((data:any)=>{
         console.log(data)
-        this.isLoggedIn=data;
+        this.isLoggedIn=this.loginService.isLoggedin();
+        this.user= this.loginService.getUser();
+        console.log(this.user)
       })
-    this.user= this.loginService.getUser();
-      this.isLoggedIn=this.loginService.isLoggedin()
+     // this.isLoggedIn=this.loginService.isLoggedin()
     }
-    logoutUser()
+    LogoutUser()
     {
-      this.loginService.isLogin.next(false);
       this.loginService.logout()
+      this.loginService.isLogin.next(false);
     }
    
 }
