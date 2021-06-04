@@ -15,6 +15,9 @@ export class SignupComponent implements OnInit {
   user:User=new User();
   message1!:string;
   message2!:string;
+  otpmessage!: string;
+  load:boolean=false;
+  load2: boolean=false;
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private httpservice:TutorialServiceService) { }
@@ -27,6 +30,7 @@ export class SignupComponent implements OnInit {
         '',
         [Validators.required, Validators.email, Validators.minLength(5)]
       ],
+      otp: ['', Validators.required],
       password: ['', Validators.required],
       cpassword: ['', Validators.required]
     },{
@@ -37,17 +41,37 @@ export class SignupComponent implements OnInit {
   {
     return this.signupForm.controls;
   }
+  sendOTP(){
+    this.load=true;
+    let email= this.signupForm.get('email')?.value
+    this.httpservice.sendOTP(email).subscribe(response=>{
+      console.log(response)
+      console.log("OTP sent")
+      this.otpmessage="otp sent successfully"
+      this.load=false;
+    });
+  }
   submit()
   {
+    this.load2=true;
+    if(!this.signupForm.valid)
+{
+  console.log("please fill the required fields first");
+  this.message2="please fill the required fields first";
+  this.load2=false;
+  return;
+}
     this.user=this.signupForm.value;
-    this.httpservice.signUser(this.user).subscribe(data=>
+    this.httpservice.signUser(this.user,this.signupForm.get('otp')?.value).subscribe(data=>
       {
         console.log(data);
-       this.message1="Successfully Saved!"
-      },error=>{
+       this.message1="Successfully Registered! You can Login Now"
+       this.load2=false;
+      },(error:any)=>{
 
         console.log(error)
-        this.message2="Email already exists";
+        this.message2=" Username/Email already exists or OTP was wrong";
+        this.load2=false;
       });
   }
   onClose()
@@ -55,6 +79,7 @@ export class SignupComponent implements OnInit {
     // this.signupForm.patchValue(new User());
     this.message1="";
     this.message2="";
+    this.otpmessage="";
   }
 
 }

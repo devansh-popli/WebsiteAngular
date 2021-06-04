@@ -26,16 +26,16 @@
              Welcome {{user.name}}
             </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#" routerLink="/myaccount">My Account</a></li>
-              <li><a class="dropdown-item"   (click)="logoutUser()" href="#">Logout</a></li>
+              <li><a class="dropdown-item"  routerLink="/myaccount">My Account</a></li>
+              <li><a class="dropdown-item"   (click)="LogoutUser()" >Logout</a></li>
             </ul>
           </div>
           <ul *ngIf="!isLoggedIn" class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link"  aria-current="page" href="#" routerLinkActive="active" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+              <a class="nav-link"  aria-current="page" routerLinkActive="active" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" routerLinkActive="active" data-bs-toggle="modal" data-bs-target="#signupmodal">SignUp</a>
+              <a class="nav-link"  routerLinkActive="active" data-bs-toggle="modal" data-bs-target="#signupmodal">SignUp</a>
             </li>        
           </ul>
         </form>

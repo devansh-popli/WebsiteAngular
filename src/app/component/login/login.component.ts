@@ -66,9 +66,9 @@ export class LoginComponent implements OnInit {
            console.log("user saved in local storage")
            let el: HTMLElement = this.myDiv.nativeElement;
            el.click();
-           this.httpService.isLogin.next(true);
          //  location.reload()
           })
+          // this.httpService.isLogin.next(true);
           console.log("success")
         },(error)=>{
           console.log("error")
