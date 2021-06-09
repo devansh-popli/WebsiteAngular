@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Video } from 'src/video';
 import { Model } from './model';
@@ -11,10 +12,10 @@ import { User } from './user';
 })
 export class TutorialServiceService {
   baseUrl = "http://localhost:8080";
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,private router:Router) { }
   public isLoading = new BehaviorSubject<Boolean>(false);
   public isLogin = new BehaviorSubject<Boolean>(false);
-    
+  public searchName=new Subject<string>();
   public sendOTP(email:any)
   {
     console.log("email"+email)
@@ -58,6 +59,7 @@ export class TutorialServiceService {
   public logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+   // this.router.navigate(['home'])
     //return true;
   }
   public getToken() {

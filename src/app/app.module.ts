@@ -10,7 +10,7 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule ,FormsModule} from '@angular/forms';
 import { ForgotComponent } from './component/forgot/forgot.component';
 import { SignupComponent } from './component/signup/signup.component';
 import { LoginComponent } from './component/login/login.component';
@@ -21,6 +21,8 @@ import {MatCardModule} from '@angular/material/card';
 import { VideosComponent } from './component/videos/videos.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     LoginComponent,
     FooterComponent,
     MyAccountComponent,
-    VideosComponent 
+    VideosComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     HttpClientModule,
     MatCardModule,
     MatProgressBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    Ng2SearchPipeModule,
+    FormsModule,
+    MatTableModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
