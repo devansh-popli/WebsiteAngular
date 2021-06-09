@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BlogsComponent } from './component/blogs/blogs.component';
 import { ContactUsComponent } from './component/contact-us/contact-us.component';
 import { ForgotComponent } from './component/forgot/forgot.component';
 import { HomeComponent } from './component/home/home.component';
@@ -29,6 +30,9 @@ const routes: Routes = [
   },
   {
     path:'tutorials/:id',component:VideosComponent,canActivate:[AuthGuard]
+  },
+  {
+    path:'blogs',component:BlogsComponent,canActivate:[AuthGuard]
   }
 ];
 

@@ -21,6 +21,8 @@ import {MatCardModule} from '@angular/material/card';
 import { VideosComponent } from './component/videos/videos.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { BlogsComponent } from './component/blogs/blogs.component';
+import { BlogPostComponent } from './component/blog-post/blog-post.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     LoginComponent,
     FooterComponent,
     MyAccountComponent,
-    VideosComponent 
+    VideosComponent,
+    BlogsComponent,
+    BlogPostComponent 
   ],
   imports: [
     BrowserModule,
