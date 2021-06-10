@@ -10,6 +10,7 @@ import { Blog } from 'src/blog';
 
 export class BlogsComponent implements OnInit {
 blogs!:Blog[];
+htmls:string="<h2>Hey there this is just testing</h2>"
   constructor(private blogService:TutorialServiceService,
     
     private router:Router) { }

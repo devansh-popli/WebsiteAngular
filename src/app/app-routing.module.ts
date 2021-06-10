@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BlogPostComponent } from './component/blog-post/blog-post.component';
 import { BlogsComponent } from './component/blogs/blogs.component';
 import { ContactUsComponent } from './component/contact-us/contact-us.component';
 import { ForgotComponent } from './component/forgot/forgot.component';
@@ -33,6 +34,10 @@ const routes: Routes = [
   },
   {
     path:'blogs',component:BlogsComponent,canActivate:[AuthGuard]
+  },
+  {
+    path:'blogs/:slug',component:BlogPostComponent,canActivate:[AuthGuard]},
+   { path:'blogs/:slug',component:BlogPostComponent,canActivate:[AuthGuard]
   }
 ];
 

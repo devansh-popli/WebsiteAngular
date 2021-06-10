@@ -1,9 +1,11 @@
 <div class="text-center my-4" >
 <h1>Coding Capsules By Ankita Verma</h1></div>
+<!-- <div [innerHtml]="htmls | safe: 'html'"></div> -->
+<!-- {{ htmls |  safe: 'html'}} -->
 <div *ngFor="let blog of blogs" class="container m-5">
     <mat-card>
-        <mat-card-title>{{blog.heading}}</mat-card-title>
-        <mat-card-content>{{blog.content}}</mat-card-content>
+        <mat-card-title>{{blog.heading }}</mat-card-title>
+        <mat-card-content>{{blog.content }}</mat-card-content>
         <button mat-stroked-button color="primary" (click)="navigateToBlogsPost(blog.blog_id)">Read More >></button>
     </mat-card> 
   

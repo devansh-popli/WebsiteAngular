@@ -10,7 +10,7 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule ,FormsModule} from '@angular/forms';
 import { ForgotComponent } from './component/forgot/forgot.component';
 import { SignupComponent } from './component/signup/signup.component';
 import { LoginComponent } from './component/login/login.component';
@@ -21,8 +21,11 @@ import {MatCardModule} from '@angular/material/card';
 import { VideosComponent } from './component/videos/videos.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {MatTableModule} from '@angular/material/table';
 import { BlogsComponent } from './component/blogs/blogs.component';
 import { BlogPostComponent } from './component/blog-post/blog-post.component';
+import { SafePipe } from './safe.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +40,8 @@ import { BlogPostComponent } from './component/blog-post/blog-post.component';
     MyAccountComponent,
     VideosComponent,
     BlogsComponent,
-    BlogPostComponent 
+    BlogPostComponent,
+    SafePipe 
   ],
   imports: [
     BrowserModule,
@@ -49,7 +53,10 @@ import { BlogPostComponent } from './component/blog-post/blog-post.component';
     HttpClientModule,
     MatCardModule,
     MatProgressBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    Ng2SearchPipeModule,
+    FormsModule,
+    MatTableModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

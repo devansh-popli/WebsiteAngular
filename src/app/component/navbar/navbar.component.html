@@ -14,13 +14,12 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#" routerLinkActive="active" routerLink="/contact-us">Contact Us!</a>
-          </li>
-         
-        
+          </li>   
         </ul>
         <form class="d-flex justify-content-center">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-success" type="submit">Search</button>
+          {{firstName}}
+          <input class="form-control me-2" type="search" placeholder="Search"  name="firstName" [(ngModel)]="firstName" (ngModelChange)="Search()"  >
+          <button class="btn btn-success" type="submit" >Search</button>
           <div *ngIf="isLoggedIn"class="dropdown">
             <a class="m-2 dropdown-toggle text-white text-decoration-none" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
              Welcome {{user.name}}
