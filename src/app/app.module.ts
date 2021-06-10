@@ -23,6 +23,9 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatTableModule} from '@angular/material/table';
+import { BlogsComponent } from './component/blogs/blogs.component';
+import { BlogPostComponent } from './component/blog-post/blog-post.component';
+import { SafePipe } from './safe.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +39,9 @@ import {MatTableModule} from '@angular/material/table';
     FooterComponent,
     MyAccountComponent,
     VideosComponent,
+    BlogsComponent,
+    BlogPostComponent,
+    SafePipe 
   ],
   imports: [
     BrowserModule,

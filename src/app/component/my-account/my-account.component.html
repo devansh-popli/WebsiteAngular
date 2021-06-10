@@ -13,7 +13,7 @@
         <label class="m-2">Email :</label>
         <input  type="email" formControlName="email"  class="form-control " placeholder="Email">
     </div>
-        <button  type="submit" [class.disabled]="updateForm.invalid"class="btn bgg mb-3 mt-3 text-white">Update</button>
+        <button  type="submit" [class.disabled]="updateForm.invalid"class="btn bgg mb-3 mt-3 text-white" (click)="updateUserForm()">Update</button>
     </form>
 <hr>
     <form [formGroup]="changePassword">
@@ -30,7 +30,7 @@
         <label class="m-2">Confirm New Password :</label>
         <input type="password" formControlName="changepass"  class="form-control " placeholder="Confirm New Password">
 </div>
-        <button type="submit" [class.disabled]="changePassword.invalid" class="btn bgg mb-3 mt-3 text-white">Update</button>
+        <button type="submit" [class.disabled]="changePassword.invalid" class="btn bgg mb-3 mt-3 text-white" (click)="updatePassword()">Change Password</button>
        
     </form>
 </div>

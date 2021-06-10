@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TutorialServiceService } from 'src/app/tutorial-service.service';
 import { Video } from 'src/video';
-import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl, SafeUrl, SafeHtml} from '@angular/platform-browser';
 @Component({
   selector: 'app-videos',
   templateUrl: './videos.component.html',
@@ -10,7 +10,6 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browse
 })
 export class VideosComponent implements OnInit {
 videos!:Video[]
-c:string="https://www.youtube.com/embed/videoseries?list=PLu0W_9lII9agICnT8t4iYVSZ3eykIAOME";
 safeURL!:any;
 public id:any;
   constructor(private route:ActivatedRoute,

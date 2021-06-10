@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { Blog } from 'src/blog';
 import { Video } from 'src/video';
 import { Model } from './model';
 import { User } from './user';
@@ -43,7 +44,9 @@ export class TutorialServiceService {
     return this.httpClient.get<User>(`${this.baseUrl}/current-user`);
   }
   public setUser(user: User) {
+    console.log(user);
     localStorage.setItem('user', JSON.stringify(user));
+
     this.isLogin.next(true);
   }
   public getUser() {
@@ -76,5 +79,24 @@ export class TutorialServiceService {
 
   public getVideos(cardId: string) {
     return this.httpClient.get<Video[]>(`${this.baseUrl}/videos/${cardId}`);
+  }
+
+  public getBlogs()
+  {
+    return this.httpClient.get<Blog[]>(`${this.baseUrl}/blogs`);
+  }
+  public getBlog(slug:string)
+  {
+    return this.httpClient.get<Blog>(`${this.baseUrl}/blogs/${slug}`);
+  }
+
+  public updateUser(form:any)
+  {
+    return this.httpClient.put<User>(`${this.baseUrl}/updateUser`,form);
+  }
+
+  public updatePassword(form:User)
+  {
+    return this.httpClient.put<User>(`${this.baseUrl}/updatePassword`,form);
   }
 }
