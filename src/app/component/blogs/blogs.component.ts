@@ -22,12 +22,18 @@ htmls:string="<h2>Hey there this is just testing</h2>"
       
       })
   }
-
   navigateToBlogsPost(blog_id:string)
   {
     this.router.navigate([`/blogs/${blog_id}`]);
   }
-
+  addBlog()
+  {
+    this.router.navigate(['newblog']);
+  }
+  editBlog(blog_id:string)
+  {
+    this.router.navigate([`/newblog/${blog_id}`]);
+  }
 
 }
 

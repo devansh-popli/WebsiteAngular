@@ -1,0 +1,19 @@
+<div class="container mt-4">
+    <form [formGroup]="saveForm">
+<div class="mt-3">
+<label>Heading</label>
+<input class="form-control mt-2" type="text" formControlName="heading">
+</div>
+<div class="mt-3">
+<label>Detail Blog</label>
+<textarea class="form-control mt-2" formControlName="detailBlog"></textarea>
+</div>
+<div class="mt-3">
+<label>Content</label>
+<textarea class="form-control mt-2" formControlName="content"></textarea>
+</div>
+<button class="btn btn-primary mt-3" (click)="saveBlog()" >Save</button>
+<button class="btn btn-primary mt-3 mx-3">Cancel</button>
+</form>
+</div>
+

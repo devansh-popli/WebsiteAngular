@@ -26,6 +26,9 @@ import {MatTableModule} from '@angular/material/table';
 import { BlogsComponent } from './component/blogs/blogs.component';
 import { BlogPostComponent } from './component/blog-post/blog-post.component';
 import { SafePipe } from './safe.pipe';
+import { EditAddBlogComponent } from './component/edit-add-blog/edit-add-blog.component';
+import { SlugifyPipe } from './component/slugify.pipe';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,8 +44,9 @@ import { SafePipe } from './safe.pipe';
     VideosComponent,
     BlogsComponent,
     BlogPostComponent,
-    SafePipe 
-  ],
+    SafePipe,
+    EditAddBlogComponent,
+    SlugifyPipe  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -57,8 +61,9 @@ import { SafePipe } from './safe.pipe';
     Ng2SearchPipeModule,
     FormsModule,
     MatTableModule,
+    CommonModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders,SlugifyPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

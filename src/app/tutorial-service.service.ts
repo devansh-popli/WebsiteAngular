@@ -99,4 +99,8 @@ export class TutorialServiceService {
   {
     return this.httpClient.put<User>(`${this.baseUrl}/updatePassword`,form);
   }
+  public postBlogs(blog:Blog)
+  {
+    return this.httpClient.post(`${this.baseUrl}/insert`,blog);
+  }
 }
