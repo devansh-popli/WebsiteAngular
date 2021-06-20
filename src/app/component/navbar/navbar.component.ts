@@ -34,6 +34,13 @@ export class NavbarComponent implements OnInit {
    
    Search()
    {
-this.loginService.searchName.next(this.firstName)
+     console.log("href"+window.location.pathname.includes('search-results'))
+     this.loginService.dosearch.next(true);
+     this.router.navigate([`/search-results/${this.firstName}`])
+     console.log("done ")
+   }
+   Search1()
+   {
+    this.loginService.dosearch.next(false);
    }
 }

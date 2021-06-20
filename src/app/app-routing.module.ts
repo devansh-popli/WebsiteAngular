@@ -8,6 +8,7 @@ import { HomeComponent } from './component/home/home.component';
 import { MyAccountComponent } from './component/my-account/my-account.component';
 import { TutorialsComponent } from './component/tutorials/tutorials.component';
 import { VideosComponent } from './component/videos/videos.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
@@ -38,6 +39,8 @@ const routes: Routes = [
   {
     path:'blogs/:slug',component:BlogPostComponent,canActivate:[AuthGuard]},
    { path:'blogs/:slug',component:BlogPostComponent,canActivate:[AuthGuard]
+  },
+   { path:'search-results/:query',component:SearchResultsComponent
   }
 ];
 

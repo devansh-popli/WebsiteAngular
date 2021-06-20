@@ -18,8 +18,8 @@
         </ul>
         <form class="d-flex justify-content-center">
           {{firstName}}
-          <input class="form-control me-2" type="search" placeholder="Search"  name="firstName" [(ngModel)]="firstName" (ngModelChange)="Search()"  >
-          <button class="btn btn-success" type="submit" >Search</button>
+          <input class="form-control me-2" type="search" (click)="Search1()" placeholder="Search"  name="firstName" [(ngModel)]="firstName"   >
+          <button class="btn btn-success" type="submit" (click)="Search()">Search</button>
           <div *ngIf="isLoggedIn"class="dropdown">
             <a class="m-2 dropdown-toggle text-white text-decoration-none" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
              Welcome {{user.name}}

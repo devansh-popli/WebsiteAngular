@@ -26,6 +26,7 @@ import {MatTableModule} from '@angular/material/table';
 import { BlogsComponent } from './component/blogs/blogs.component';
 import { BlogPostComponent } from './component/blog-post/blog-post.component';
 import { SafePipe } from './safe.pipe';
+import { SearchResultsComponent } from './search-results/search-results.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { SafePipe } from './safe.pipe';
     VideosComponent,
     BlogsComponent,
     BlogPostComponent,
-    SafePipe 
+    SafePipe,
+    SearchResultsComponent 
   ],
   imports: [
     BrowserModule,

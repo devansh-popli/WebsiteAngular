@@ -15,6 +15,7 @@ export class TutorialServiceService {
   baseUrl = "http://localhost:8080";
   constructor(private httpClient: HttpClient,private router:Router) { }
   public isLoading = new BehaviorSubject<Boolean>(false);
+  public dosearch = new BehaviorSubject<Boolean>(false);
   public isLogin = new BehaviorSubject<Boolean>(false);
   public searchName=new Subject<string>();
   public sendOTP(email:any)
