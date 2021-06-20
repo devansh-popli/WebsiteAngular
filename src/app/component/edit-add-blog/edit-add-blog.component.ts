@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { TutorialServiceService } from 'src/app/tutorial-service.service';
 import { Blog } from 'src/blog';
 import { SlugifyPipe } from '../slugify.pipe';
-
 @Component({
   selector: 'app-edit-add-blog',
   templateUrl: './edit-add-blog.component.html',
@@ -16,14 +15,12 @@ blogPost!:Blog;
   constructor(private blogService:TutorialServiceService,
     private aroute:ActivatedRoute,
     private fb:FormBuilder,private slugifyPipe:SlugifyPipe) { }
-
   ngOnInit(): void {
     this.saveForm=this.fb.group(
       {
         heading:[''],
         detailBlog:[''],
         content:[''],
-
       }
     );
 let slugId:any=this.aroute.snapshot.paramMap.get('slug');
@@ -39,7 +36,6 @@ this.blogService.getBlog(slugId).subscribe(response=>
     this.blogPost.blog_id=slug;
     this.blogService.postBlogs(this.blogPost).subscribe(response=>
       {
-
         console.log(response);
       })
   }
