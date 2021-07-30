@@ -1,0 +1,12 @@
+/* .align-middle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
+
+@media (max-width: 580px){
+    .usericon{
+        display: none;
+    }
+
+}

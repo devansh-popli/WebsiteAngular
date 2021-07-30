@@ -1,23 +1,27 @@
 <div class="container text-center">
 
     <div class="row d-flex align-items-center">
-       
-        <div *ngFor="let video of videos  " class="col-lg-6 ">
+    
+    <div *ngFor="let video of videos  "class="col-lg-6 col-md-6 " >
 
-            <mat-card class="example m-4" style="width: 590px;">
-                <iframe width="550" height="315" [src]="video.src" title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-                <mat-card-title>
-                    <h1>{{video.title}}</h1>
-                </mat-card-title>
-                <mat-card-content>
-                    <h3>{{video.description}}</h3>
-                </mat-card-content>
-                <!-- <mat-card-actions>
-
-                </mat-card-actions> -->
-            </mat-card>
+    <mat-card class="example m-4" >
+        
+        <mat-card-title>
+            <h1>{{video.title}}</h1>
+        </mat-card-title>
+        <div style="height:270px ;">
+            <iframe mat-card-lg-image class="w-100 h-100"  [src]="video.src" title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        
+        <mat-card-content>
+            <h3>{{video.description}}</h3>
+        </mat-card-content>
+        <!-- <mat-card-actions>
+            
+        </mat-card-actions> -->
+    </mat-card>
         </div>
     </div>
 </div>

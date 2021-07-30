@@ -10,7 +10,7 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./tutorials.component.css']
 })
 export class TutorialsComponent implements OnInit{
- cards!:Model[];
+ cards!:any[];
  tutName!:string;
  
  constructor(private service:TutorialServiceService,
@@ -18,15 +18,17 @@ export class TutorialsComponent implements OnInit{
   
   ngOnInit(): void
   {
-    this.service.getCards().subscribe(data=>
-      {
-        this.cards=data;
-      });
+    setTimeout(()=>{
+      this.service.getCards().subscribe(data=>
+        {
+          this.cards=data;
+        });
+    })
     
   }
   navigate(cardId:number)
   {
-    this.router.navigate([`/tutorials/${cardId}`]);
+    this.router.navigate([`/videotutorials/${cardId}`]);
   }
 
 }

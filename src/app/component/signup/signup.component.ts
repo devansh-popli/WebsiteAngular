@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PasswordValidator } from 'src/app/password.validator';
 import { TutorialServiceService } from 'src/app/tutorial-service.service';
 import { User } from 'src/app/user';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { ViewChild } from '@angular/core';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -13,14 +14,15 @@ import { User } from 'src/app/user';
 export class SignupComponent implements OnInit {
   signupForm!:FormGroup
   user:User=new User();
-  message1!:string;
+  message!:string;
   message2!:string;
   otpmessage!: string;
   load:boolean=false;
   load2: boolean=false;
+  @ViewChild('myDiv') myDiv!: ElementRef<HTMLElement>;
   constructor(private formBuilder: FormBuilder,
     private router: Router,
-    private httpservice:TutorialServiceService) { }
+    private httpservice:TutorialServiceService,  private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
@@ -65,9 +67,16 @@ export class SignupComponent implements OnInit {
     this.httpservice.signUser(this.user,this.signupForm.get('otp')?.value).subscribe(data=>
       {
         console.log(data);
-       this.message1="Successfully Registered! You can Login Now"
+       this.message="Successfully Registered! You can Login Now"
        this.load2=false;
-      },(error:any)=>{
+       let el: HTMLElement = this.myDiv.nativeElement;
+           el.click();
+       this._snackBar.open(this.message, "",{
+        verticalPosition:"top",
+        duration:5000,
+        panelClass: ['success-snackbar']
+      });
+      },(error:any)=>{  
 
         console.log(error)
         this.message2=" Username/Email already exists or OTP was wrong";
@@ -77,7 +86,7 @@ export class SignupComponent implements OnInit {
   onClose()
   {
     // this.signupForm.patchValue(new User());
-    this.message1="";
+    this.message2="";
     this.message2="";
     this.otpmessage="";
   }

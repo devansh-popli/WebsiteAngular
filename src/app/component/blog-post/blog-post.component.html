@@ -1,4 +1,55 @@
 <div class="container mt-5">
-<h1>{{blog.heading}}</h1>
+<h1>{{blog?.heading}}</h1>
 <div [innerHtml]="blog.detailBlog | safe: 'html'"></div>
+<hr>
+</div>
+<div class="container">
+    <h2 *ngIf="!userLogin">Please Login to Post a Comment</h2>
+    <h2 *ngIf="userLogin">Post a Comment</h2>
+    <div *ngIf="userLogin" class="form">
+        <textarea class="form-control my-3" [(ngModel)]="comment" type="text"  name="comment" id="comment" placeholder="enter comment here..."></textarea>
+        <button [disabled]="!comment|| comment==''" mat-raised-button color="primary" (click)="submitComment()">Post</button>
+    </div>
+
+    <h2 class="my-3" ><strong style="font-size: x-large;">Comments</strong></h2>
+        <div *ngFor="let commentt of comments">
+            <div class="row ">
+                <div class="col-lg-1 col-md-2 col-sm-2 mt-2"><img class="w-100 p-2 usericon" alt="abcddef"src="https://img.icons8.com/color/96/000000/person-skin-type-7.png"/></div>
+                <div class="col-lg-11 col-md-10 col-sm-10 my-4"><div><strong>{{commentt.user.username}}</strong> at <span class="badge bg-secondary p-1 ">{{commentt.created_at | date:'medium'}}</span></div>
+                <div> {{commentt.comment}}</div>
+                <div *ngIf="userLogin"  class="reply my-2 mx-0">
+
+                    <a   role="button" [attr.aria-controls]="'com'+commentt.sno" class="btn btn-primary btn-sm" type="button" data-bs-toggle="collapse" [href]="'#com'+commentt.sno" aria-expanded="true">
+                        Add Reply
+                    </a>
+                    <div class="collapse" [id]="'com'+commentt.sno" >
+                        <div class="card card-body my-2">
+                         <div class="form">
+                             <textarea class="form-control my-3" [(ngModel)]="reply" type="text"  name="reply" id="reply" placeholder="write a reply..."></textarea>
+                             <button [disabled]="!reply|| reply==''" mat-raised-button color="primary" (click)="submitComment(commentt.sno)">Reply</button>
+                         </div>
+                         </div>
+                     </div>
+                 </div>
+                 <a  *ngIf="commentt.subComments.length>0" [attr.aria-controls]="'reply'+commentt.sno" type="button" data-bs-toggle="collapse" [href]="'#reply'+commentt.sno" aria-expanded="true">
+                    Show Replies
+                </a>
+                <div class="collapse" [id]="'reply'+commentt.sno" >        
+                        <div *ngFor="let replyy of commentt.subComments">
+                            <div class="row my-3">
+                            <div class="col-md-1 "><img class="w-75 usericon rounded-circle p-2" alt="abcddef"src="https://img.icons8.com/color/96/000000/person-skin-type-7.png"/></div>
+                                <div class="col-md-11 my-1 align-middle"><div><strong>{{replyy.user.username}}</strong> at <span class="badge bg-secondary p-1 ">{{replyy.created_at | date:'medium'}}</span></div>
+                                {{replyy.comment}}
+                                </div>
+                        </div>
+                     </div>
+                 </div>
+                
+           
+            </div>
+                    
+            
+       
+       
+        </div>
 </div>

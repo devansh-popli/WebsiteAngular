@@ -12,11 +12,28 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class TutorialServiceService {
-  baseUrl = "http://localhost:8080";
+  
+  // baseUrl = "http://localhost:5000";
+  baseUrl = "http://springboottutorialwebsite-env.eba-8ptpv5ft.us-east-2.elasticbeanstalk.com";
   constructor(private httpClient: HttpClient,private router:Router) { }
   public isLoading = new BehaviorSubject<Boolean>(false);
+  public dosearch = new BehaviorSubject<Boolean>(false);
   public isLogin = new BehaviorSubject<Boolean>(false);
+  public fetchComments = new BehaviorSubject<Boolean>(false);
   public searchName=new Subject<string>();
+  postComment(comment: any, slug: any, email: any,parentSno:any) {
+   var comments={'comment':comment,'email':email,'blogId':slug,'parentCommentId':parentSno};
+    console.log("email"+email+"comment"+comments)
+    return this.httpClient.post<any>(`${this.baseUrl}/comments/postComment`,comments);
+  }
+  getComment(postId: any) {
+    const comment={'blogId':postId}
+    return this.httpClient.post<any>(`${this.baseUrl}/comments/getComments`,comment);
+  }
+  getReplies(postId: any) {
+    const reply={'blogId':postId}
+    return this.httpClient.post<any>(`${this.baseUrl}/comments/getReplies`,reply); 
+  }
   public sendOTP(email:any)
   {
     console.log("email"+email)
@@ -27,12 +44,12 @@ export class TutorialServiceService {
     return this.httpClient.post<User>(`${this.baseUrl}/tutologin`, user);
   }
   public saveToken(token: any) {
-    localStorage.setItem('token', token);
+    sessionStorage.setItem('token', token);
     // this.isLogin.next(true);
     return true;
   }
   public isLoggedin() {
-    let tokenstr = localStorage.getItem('token')
+    let tokenstr = sessionStorage.getItem('token')
     if (tokenstr == undefined || tokenstr == '' || tokenstr == null) {
       return false;
     }
@@ -45,12 +62,12 @@ export class TutorialServiceService {
   }
   public setUser(user: User) {
     console.log(user);
-    localStorage.setItem('user', JSON.stringify(user));
+    sessionStorage.setItem('user', JSON.stringify(user));
 
     this.isLogin.next(true);
   }
   public getUser() {
-    let str = localStorage.getItem('user');
+    let str = sessionStorage.getItem('user');
     if (str != null) {
       return JSON.parse(str)
     }
@@ -59,14 +76,25 @@ export class TutorialServiceService {
       return null;
     }
   }
+  public getUserRole() {
+    let str = sessionStorage.getItem('user');
+    if (str != null) {
+      console.log((JSON.parse(str)).authorities[0].authority)
+      return (JSON.parse(str)).authorities[0].authority;
+    }
+    else {
+      this.logout();
+      return null;
+    }
+  }
   public logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-   // this.router.navigate(['home'])
-    //return true;
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
+    //this.router.navigate([''])
+    return true;
   }
   public getToken() {
-    return localStorage.getItem('token')
+    return sessionStorage.getItem('token')
   }
   public signUser(user: User,otp:string) {
     console.log(user);
@@ -74,11 +102,11 @@ export class TutorialServiceService {
   }
 
   public getCards() {
-    return this.httpClient.get<Model[]>(`${this.baseUrl}/cards`);
+    return this.httpClient.get<Model[]>(`${this.baseUrl}/tutorials/cards`);
   }
 
   public getVideos(cardId: string) {
-    return this.httpClient.get<Video[]>(`${this.baseUrl}/videos/${cardId}`);
+    return this.httpClient.get<Video[]>(`${this.baseUrl}/tutorials/videos/${cardId}`);
   }
 
   public getBlogs()
@@ -95,7 +123,7 @@ export class TutorialServiceService {
     return this.httpClient.put<User>(`${this.baseUrl}/updateUser`,form);
   }
 
-  public updatePassword(form:User)
+  public updatePassword(form:any)
   {
     return this.httpClient.put<User>(`${this.baseUrl}/updatePassword`,form);
   }

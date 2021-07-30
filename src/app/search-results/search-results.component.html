@@ -1,0 +1,21 @@
+<div class="container">
+<div class="text-center my-4" *ngIf="blogs.length>0">
+    <h1>Search Results for {{query}}</h1>
+</div>
+        <div class="row" *ngIf="blogs.length>0">
+            <div *ngFor="let blog of blogs" class="container my-5">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <mat-card>
+                        <mat-card-title>{{blog.heading }}</mat-card-title>
+                        <mat-card-content>{{blog.content }}</mat-card-content>
+                        <button mat-stroked-button color="primary" (click)="navigateToBlogsPost(blog.blog_id)">Read More >></button>
+                    </mat-card> 
+                </div> 
+            </div>
+            
+        </div>
+        <div *ngIf="blogs.length<=0" class="text-center">
+          <h2> Sorry No Search Results for {{query}}</h2>
+        </div>
+    </div>
+    

@@ -26,9 +26,14 @@ import {MatTableModule} from '@angular/material/table';
 import { BlogsComponent } from './component/blogs/blogs.component';
 import { BlogPostComponent } from './component/blog-post/blog-post.component';
 import { SafePipe } from './safe.pipe';
-import { EditAddBlogComponent } from './component/edit-add-blog/edit-add-blog.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 import { SlugifyPipe } from './component/slugify.pipe';
+import { EditAddBlogComponent } from './component/edit-add-blog/edit-add-blog.component';
 import { CommonModule } from '@angular/common';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { CollapseModule, WavesModule } from 'angular-bootstrap-md'
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +50,7 @@ import { CommonModule } from '@angular/common';
     BlogsComponent,
     BlogPostComponent,
     SafePipe,
+    SearchResultsComponent ,
     EditAddBlogComponent,
     SlugifyPipe  ],
   imports: [
@@ -61,7 +67,11 @@ import { CommonModule } from '@angular/common';
     Ng2SearchPipeModule,
     FormsModule,
     MatTableModule,
-    CommonModule
+    CommonModule,
+    MatExpansionModule,
+    CollapseModule,
+    WavesModule,
+    MatSnackBarModule
   ],
   providers: [authInterceptorProviders,SlugifyPipe],
   bootstrap: [AppComponent]

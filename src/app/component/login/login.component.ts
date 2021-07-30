@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TutorialServiceService } from 'src/app/tutorial-service.service';
 import { User } from 'src/app/user';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -19,8 +20,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
-    private httpService:TutorialServiceService) { }
-
+    private httpService:TutorialServiceService,private _snackBar: MatSnackBar) { }
+    durationInSeconds = 5;
     ngOnInit() {
       this.loginForm = this.formBuilder.group({
         username: [
@@ -37,6 +38,9 @@ export class LoginComponent implements OnInit {
     get e()
     {
       return this.loginForm.get("username");
+    }
+    onClose(){
+      this.message="";
     }
     login()
     {
@@ -66,6 +70,11 @@ export class LoginComponent implements OnInit {
            console.log("user saved in local storage")
            let el: HTMLElement = this.myDiv.nativeElement;
            el.click();
+           this._snackBar.open("Successfully Logged In","" ,{ 
+            verticalPosition: "top",
+            duration: 5000,
+            panelClass: ['success-snackbar']
+          });
          //  location.reload()
           })
           // this.httpService.isLogin.next(true);
@@ -73,6 +82,13 @@ export class LoginComponent implements OnInit {
         },(error)=>{
           console.log("error")
           console.log(error)
+          this.loginForm.controls['username'].setValue("");
+          this.loginForm.controls['password'].setValue("");
+          this.loginForm.controls['password'].setErrors({'incorrect': false});
+          this.loginForm.controls['username'].setErrors({'incorrect': false});
+          this.loginForm.value;
+          this.message="Invalid Credentials try again"
+          return;
         })
       }      
     }

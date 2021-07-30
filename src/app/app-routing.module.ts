@@ -10,35 +10,36 @@ import { HomeComponent } from './component/home/home.component';
 import { MyAccountComponent } from './component/my-account/my-account.component';
 import { TutorialsComponent } from './component/tutorials/tutorials.component';
 import { VideosComponent } from './component/videos/videos.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
+ 
   {
-    path:'',redirectTo:"home",pathMatch:"full"
-  },
-  {
-    path:'home',component:HomeComponent
+    path:'',component:HomeComponent
   },
   {
     path:'contact-us',component:ContactUsComponent
   },
   {
-    path:'tutorials',component:TutorialsComponent,canActivate:[AuthGuard]
+    path:'tutorials',component:TutorialsComponent
   },
   {
-    path:'forgot',component:ForgotComponent,canActivate:[AuthGuard]
+    path:'forgot',component:ForgotComponent
   },
   {
     path:'myaccount',component:MyAccountComponent,canActivate:[AuthGuard]
   },
   {
-    path:'tutorials/:id',component:VideosComponent,canActivate:[AuthGuard]
+    path:'videotutorials/:id',component:VideosComponent
   },
   {
-    path:'blogs',component:BlogsComponent,canActivate:[AuthGuard]
+    path:'blogs',component:BlogsComponent,pathMatch:"full"
   },
   {
-    path:'blogs/:slug',component:BlogPostComponent,canActivate:[AuthGuard]},
+    path:'blogpost/:slug',component:BlogPostComponent},
+   { path:'search-results/:query',component:SearchResultsComponent
+  },
     {
       path:'admin',component:AdminComponent,canActivate:[AuthGuard]
     },{
@@ -46,7 +47,10 @@ const routes: Routes = [
     },
     {
       path:'newblog/:slug',component:EditAddBlogComponent,canActivate:[AuthGuard]
-    }
+    },
+    {
+      path:'**',redirectTo:''
+        }
 ];
 
 @NgModule({
