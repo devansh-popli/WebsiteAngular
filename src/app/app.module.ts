@@ -26,13 +26,14 @@ import {MatTableModule} from '@angular/material/table';
 import { BlogsComponent } from './component/blogs/blogs.component';
 import { BlogPostComponent } from './component/blog-post/blog-post.component';
 import { SafePipe } from './safe.pipe';
-<<<<<<< HEAD
 import { SearchResultsComponent } from './search-results/search-results.component';
-=======
-import { EditAddBlogComponent } from './component/edit-add-blog/edit-add-blog.component';
 import { SlugifyPipe } from './component/slugify.pipe';
+import { EditAddBlogComponent } from './component/edit-add-blog/edit-add-blog.component';
 import { CommonModule } from '@angular/common';
->>>>>>> e860f788b8b30306ff97a0586ad8c2326c78856c
+import {MatExpansionModule} from '@angular/material/expansion';
+import { CollapseModule, WavesModule } from 'angular-bootstrap-md'
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,13 +50,9 @@ import { CommonModule } from '@angular/common';
     BlogsComponent,
     BlogPostComponent,
     SafePipe,
-<<<<<<< HEAD
-    SearchResultsComponent 
-  ],
-=======
+    SearchResultsComponent ,
     EditAddBlogComponent,
     SlugifyPipe  ],
->>>>>>> e860f788b8b30306ff97a0586ad8c2326c78856c
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -70,7 +67,11 @@ import { CommonModule } from '@angular/common';
     Ng2SearchPipeModule,
     FormsModule,
     MatTableModule,
-    CommonModule
+    CommonModule,
+    MatExpansionModule,
+    CollapseModule,
+    WavesModule,
+    MatSnackBarModule
   ],
   providers: [authInterceptorProviders,SlugifyPipe],
   bootstrap: [AppComponent]

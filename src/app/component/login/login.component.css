@@ -5,13 +5,13 @@
 
     .form-group .form-control
     {
-        width: 420px;
+        /* width: 420px; */
         border-radius: 5px;
         border: 1px solid #ced4da;
         padding: 15px;
         padding-left: 60px;
         color: #495057;
-        margin-left: 12px;
+        /* margin-left: 12px; */
         
     }
     .auth-page-icon
@@ -20,7 +20,7 @@
         position: absolute;
         min-width: 40px;
         padding: 15px;
-        margin-left: 10px;
+        /* margin-left: 10px; */
         
     }
    
@@ -33,12 +33,40 @@
     .container-login100-form-btn .form-control
     {
         text-align: center;
-        padding:7px;
-        margin-left: 14px;
+        padding:14px;
+        /* margin-left: 14px; */
     }
     
     .auth-content
     {
         margin-top: 20%;
     }
+    @media (max-width: 480px){
+        .form-group .form-control
+        {
+            width: 280px;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            padding: 15px;
+            padding-left: 60px;
+            color: #495057;
+            /* margin-left: 12px; */
+            
+        }
+         .login100-form-btn
+    {
+        background-color:  #7579e7;
+        border-radius: 5px;
+    }
+    .container-login100-form-btn .form-control
+    {
+        text-align: center;
+        padding:14px;
+        /* margin-left: 14px; */
+    }
     
+    .auth-content
+    {
+        margin-top: 20%;
+    }
+    }

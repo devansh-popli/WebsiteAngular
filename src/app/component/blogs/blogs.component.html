@@ -1,16 +1,25 @@
-<div class="text-center my-4">
-    <h1>Coding Capsules By Ankita Verma</h1>
-</div>
-<button class="mx-5" mat-raised-button color="primary" (click)="addBlog()">Add Blog</button>
 <!-- <div [innerHtml]="htmls | safe: 'html'"></div> -->
 <!-- {{ htmls |  safe: 'html'}} -->
-<div *ngFor="let blog of blogs" class="container m-5">
-    <mat-card>
-        <mat-card-title>{{blog.heading }}</mat-card-title>
-        <mat-card-content>{{blog.content }}</mat-card-content>
-        <button class="m-2" mat-stroked-button color="primary" (click)="navigateToBlogsPost(blog.blog_id)">Read More
-            >></button>
-            <button class="m-2" mat-stroked-button color="primary" (click)="editBlog(blog.blog_id)">Edit Blog >></button>
-            <button class="m-2" mat-stroked-button color="primary">Delete Blog >></button>
-        </mat-card>
+<div class="container">
+    <div class="text-center my-4">
+        <h1>Coding Capsules By CodeTechTutorials</h1>
+        <button class="mx-5" mat-raised-button color="primary" *ngIf="role=='ROLE_ADMIN'" (click)="addBlog()">Add Blog</button>
+    </div>
+
+    <div class="row">
+        
+        <div *ngFor="let blog of blogs" class="container my-3">
+            <div class="col-md-12 col-sm-12 col-lg-12">
+                
+                <mat-card>
+                    <mat-card-title><h2 class="text-dark card-link" (click)="navigateToBlogsPost(blog.blog_id)"><b>{{blog?.heading}}</b></h2></mat-card-title>
+                    <mat-card-content>{{blog?.content}}</mat-card-content>
+                    <button class="m-2" mat-stroked-button color="primary" (click)="navigateToBlogsPost(blog.blog_id)">Read More
+                        >></button>
+                        <button class="m-2" mat-stroked-button color="primary" (click)="editBlog(blog.blog_id)" *ngIf="role=='ROLE_ADMIN'">Edit Blog >></button>
+                        <button class="m-2" mat-stroked-button color="primary" *ngIf="role=='ROLE_ADMIN'">Delete Blog >></button>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
     </div>

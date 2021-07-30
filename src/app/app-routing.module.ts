@@ -14,38 +14,32 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
+ 
   {
-    path:'',redirectTo:"home",pathMatch:"full"
-  },
-  {
-    path:'home',component:HomeComponent
+    path:'',component:HomeComponent
   },
   {
     path:'contact-us',component:ContactUsComponent
   },
   {
-    path:'tutorials',component:TutorialsComponent,canActivate:[AuthGuard]
+    path:'tutorials',component:TutorialsComponent
   },
   {
-    path:'forgot',component:ForgotComponent,canActivate:[AuthGuard]
+    path:'forgot',component:ForgotComponent
   },
   {
     path:'myaccount',component:MyAccountComponent,canActivate:[AuthGuard]
   },
   {
-    path:'tutorials/:id',component:VideosComponent,canActivate:[AuthGuard]
+    path:'videotutorials/:id',component:VideosComponent
   },
   {
-    path:'blogs',component:BlogsComponent,canActivate:[AuthGuard]
+    path:'blogs',component:BlogsComponent,pathMatch:"full"
   },
   {
-    path:'blogs/:slug',component:BlogPostComponent,canActivate:[AuthGuard]},
-<<<<<<< HEAD
-   { path:'blogs/:slug',component:BlogPostComponent,canActivate:[AuthGuard]
-  },
+    path:'blogpost/:slug',component:BlogPostComponent},
    { path:'search-results/:query',component:SearchResultsComponent
-  }
-=======
+  },
     {
       path:'admin',component:AdminComponent,canActivate:[AuthGuard]
     },{
@@ -53,8 +47,10 @@ const routes: Routes = [
     },
     {
       path:'newblog/:slug',component:EditAddBlogComponent,canActivate:[AuthGuard]
-    }
->>>>>>> e860f788b8b30306ff97a0586ad8c2326c78856c
+    },
+    {
+      path:'**',redirectTo:''
+        }
 ];
 
 @NgModule({

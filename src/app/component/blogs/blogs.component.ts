@@ -11,20 +11,24 @@ import { Blog } from 'src/blog';
 export class BlogsComponent implements OnInit {
 blogs!:Blog[];
 htmls:string="<h2>Hey there this is just testing</h2>"
+role=""
   constructor(private blogService:TutorialServiceService,
     
     private router:Router) { }
 
   ngOnInit(): void {
-    this.blogService.getBlogs().subscribe((data:any)=>
-      {
-        this.blogs=data;
-      
-      })
+    this.role=this.blogService.getUserRole();
+    console.log(this.role)
+   setTimeout(()=>{
+     this.blogService.getBlogs().subscribe((data:any)=>
+       {
+         this.blogs=data;  
+       })
+   })
   }
   navigateToBlogsPost(blog_id:string)
   {
-    this.router.navigate([`/blogs/${blog_id}`]);
+    this.router.navigate([`/blogpost/${blog_id}`]);
   }
   addBlog()
   {

@@ -2,7 +2,9 @@
 {
     background-color:  #7579e7;
 }
-
+.nav-link{
+    cursor: pointer;
+}
     .form-group .form-control
     {
         width: 420px;
@@ -41,4 +43,17 @@
     {
         margin-top: 20%;
     }
+    .right-corner{
+        display: flex;
+       
+    }
     
+    @media (max-width: 980px){
+        .right-corner{
+            margin: 0px;
+            padding: 0px;
+            display: flex;
+            flex-direction: column; 
+        }
+    
+    }

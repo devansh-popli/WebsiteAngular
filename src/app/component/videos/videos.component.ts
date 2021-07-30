@@ -21,16 +21,19 @@ public id:any;
   {
    let id1=this.route.snapshot.paramMap.get("id");
    this.id=id1;
-   this.service.getVideos(this.id).subscribe(
-     data=>
-     {
-       this.videos=data;
-       this.videos.forEach((v:Video)=>
+   setTimeout(()=>{
+
+     this.service.getVideos(this.id).subscribe(
+       data=>
        {
-          v.src=<string>this.sanitizer.bypassSecurityTrustResourceUrl(v.src);
-       })
-     }
-   )
+         this.videos=data;
+         this.videos.forEach((v:Video)=>
+         {
+            v.src=<string>this.sanitizer.bypassSecurityTrustResourceUrl(v.src);
+         })
+       }
+     )
+   })
   }
 
 }

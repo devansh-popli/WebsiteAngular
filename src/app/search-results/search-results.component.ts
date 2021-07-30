@@ -11,30 +11,42 @@ import { TutorialServiceService } from '../tutorial-service.service';
 export class SearchResultsComponent implements OnInit {
 
   blogs!:Blog[];
+  blogsdata!:Blog[];
   htmls:string="<h2>Hey there this is just testing</h2>"
-    constructor(private blogService:TutorialServiceService,
-      
-      private router:Router,private route:ActivatedRoute) { }
   query!:any;
-    ngOnInit(): void {
-      this.blogService.dosearch.asObservable().subscribe(res=>{
-        this.query=this.route.snapshot.paramMap.get('query')   
-        if(res==true){
-          this.blogService.getBlogs().subscribe((data:any)=>
-          {
-             this.blogs=data; 
-              this.blogs=this.blogs.filter(
-                 res=>{
-                   return res.heading?.toLocaleLowerCase().match(this.query?.toLocaleLowerCase());
-                 }
-               )
-           })
-          }
-       })
-    }
+    constructor(private blogService:TutorialServiceService,    
+      private router:Router,private route:ActivatedRoute) {
+        route.params.subscribe(val => {
+          console.log(val.query)
+         this.query=val.query
+         this.blogService.dosearch.asObservable().subscribe(data=>{
+           if(data===true)
+           {
+             this.blogs=this.blogsdata.filter(
+              res=>{
+                return res.heading?.toLocaleLowerCase().match(this.query?.toLocaleLowerCase());
+              }
+            )
+           }
+         })
+        });
+       }
+ 
+    ngOnInit(): void { 
+      setTimeout(()=>{
+        this.blogService.getBlogs().subscribe((data:Blog[])=>
+              {
+               this.blogsdata= data;
+               this.blogService.dosearch.next(true)              
+        })
+      })
+      }
+
+
+   
     navigateToBlogsPost(blog_id:string)
     {
-      this.router.navigate([`/blogs/${blog_id}`]);
+      this.router.navigate([`/blogpost/${blog_id}`]);
     }
   
 }
